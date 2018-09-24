@@ -10,9 +10,34 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var deck = cardDeck()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        for _ in 1...10 {
+            if let card = deck.draw() {
+                // print("\(card)")
+                
+                var testValue = 0
+                // let myEnum = card.number
+                switch card.number {
+                case .one: print("one")
+                    testValue += 1
+                print("testValue: \(testValue)")
+                case .two: print("two")
+                    testValue += 2
+                    print("testValue: \(testValue)")
+                case .three: print("three")
+                    testValue += 3
+                    print("testValue: \(testValue)")
+                }
+            }
+        }
+        
+
+        // var cardTest = Card(number: two)
+        
     }
 
 

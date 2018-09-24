@@ -12,6 +12,8 @@
 		E912CC0D2157E7DA0085D89F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E912CC0B2157E7DA0085D89F /* Main.storyboard */; };
 		E912CC0F2157E7DB0085D89F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E912CC0E2157E7DB0085D89F /* Assets.xcassets */; };
 		E912CC122157E7DB0085D89F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E912CC102157E7DB0085D89F /* LaunchScreen.storyboard */; };
+		E912CC1B2157E8070085D89F /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912CC1A2157E8070085D89F /* Card.swift */; };
+		E912CC1D21588E590085D89F /* cardDeck.swift in Sources */ = {isa = PBXBuildFile; fileRef = E912CC1C21588E590085D89F /* cardDeck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		E912CC0E2157E7DB0085D89F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E912CC112157E7DB0085D89F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E912CC132157E7DB0085D89F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E912CC1A2157E8070085D89F /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		E912CC1C21588E590085D89F /* cardDeck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cardDeck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,24 @@
 		E912CC062157E7DA0085D89F /* SetGame */ = {
 			isa = PBXGroup;
 			children = (
-				E912CC072157E7DA0085D89F /* AppDelegate.swift */,
 				E912CC092157E7DA0085D89F /* ViewController.swift */,
 				E912CC0B2157E7DA0085D89F /* Main.storyboard */,
-				E912CC0E2157E7DB0085D89F /* Assets.xcassets */,
-				E912CC102157E7DB0085D89F /* LaunchScreen.storyboard */,
+				E912CC1A2157E8070085D89F /* Card.swift */,
+				E912CC1C21588E590085D89F /* cardDeck.swift */,
+				E912CC192157E7F10085D89F /* Supporting Files */,
 				E912CC132157E7DB0085D89F /* Info.plist */,
 			);
 			path = SetGame;
+			sourceTree = "<group>";
+		};
+		E912CC192157E7F10085D89F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E912CC072157E7DA0085D89F /* AppDelegate.swift */,
+				E912CC0E2157E7DB0085D89F /* Assets.xcassets */,
+				E912CC102157E7DB0085D89F /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +150,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E912CC0A2157E7DA0085D89F /* ViewController.swift in Sources */,
+				E912CC1B2157E8070085D89F /* Card.swift in Sources */,
+				E912CC1D21588E590085D89F /* cardDeck.swift in Sources */,
 				E912CC082157E7DA0085D89F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
