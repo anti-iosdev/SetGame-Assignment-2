@@ -13,8 +13,8 @@ struct cardDeck
     var cards = [Card]()
     
     init() {
-        for number in Card.Triple.all {
-            for symbol in Card.Triple.all {
+        for number in Card.Number.all {
+            for symbol in Card.Symbol.all {
                 for shading in Card.Triple.all {
                     for color in Card.Triple.all {
                         cards.append(Card(number: number, symbol: symbol, shading: shading, color: color))

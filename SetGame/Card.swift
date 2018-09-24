@@ -10,8 +10,8 @@ import Foundation
 
 struct Card
 {
-    var number: Triple
-    var symbol: Triple
+    var number: Number
+    var symbol: Symbol
     var shading: Triple
     var color: Triple
     
@@ -23,6 +23,59 @@ struct Card
 //        case diamonds
 //
 //        static var all = [Suit.spades,.hearts,.diamonds,.clubs]
+//    }
+    
+    enum Number {
+        case one
+        case two
+        case three
+        
+        var result: Int {
+            switch self {
+            case .one: return 1
+            case .two: return 2
+            case .three: return 3
+            }
+        }
+        
+        static var all = [Number.one,.two,.three]
+
+    }
+    
+    enum Symbol {
+        case one
+        case two
+        case three
+        
+        var result: String {
+            switch self {
+            case .one: return "▲"
+            case .two: return "●"
+            case .three: return "■"
+            }
+        }
+        
+        static var all = [Symbol.one,.two,.three]
+    }
+    
+    enum Shading {
+        case one
+        case two
+        case three
+    }
+    
+//    enum Color {
+//        case one
+//        case two
+//        case three
+//
+//        var result:  {
+//            switch self {
+//            case .one: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//            case .two: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//            case .three: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//            }
+//        }
 //    }
     
     enum Triple {
@@ -46,7 +99,7 @@ struct Card
 //        case one
 //        case two
 //        case three
-//        
+//
 //        var result: Int {
 //            switch self {
 //            case .one: return 1
