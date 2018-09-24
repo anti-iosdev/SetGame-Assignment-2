@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Card
 {
     var number: Number
     var symbol: Symbol
-    var shading: Triple
-    var color: Triple
+    var shading: Shading
+    var color: Color
     
 //    var suit: Suit
 //    enum Suit {
@@ -59,24 +60,37 @@ struct Card
     }
     
     enum Shading {
+        // filled in, hollow, striped
         case one
         case two
         case three
+        
+        var result: Int {
+            switch self {
+            case .one: return -1
+            case .two: return 5
+            case .three: return 15
+            }
+        }
+        
+        static var all = [Shading.one,.two,.three]
     }
     
-//    enum Color {
-//        case one
-//        case two
-//        case three
-//
-//        var result:  {
-//            switch self {
-//            case .one: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//            case .two: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//            case .three: return #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-//            }
-//        }
-//    }
+    enum Color {
+        case one
+        case two
+        case three
+
+        var result:  UIColor {
+            switch self {
+            case .one: return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            case .two: return #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
+            case .three: return #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+            }
+        }
+        
+        static var all = [Color.one,.two,.three]
+    }
     
     enum Triple {
         //case symbol
