@@ -29,14 +29,30 @@ class ViewController: UIViewController {
         let number = card.number.result
         let symbol = card.symbol.result
         let color = card.color.result
-        let strokeWidth = card.shading.result
+        let shading = card.shading.result
         
-        let attributes: [NSAttributedString.Key:Any] = [
-            .strokeColor : color,
-            .strokeWidth : strokeWidth
-        ]
+        func attributeHelper(shading: Int) -> [NSAttributedString.Key:Any] {
+            if shading == 15 {
+                // color = color.withAlphaComponent(0.1)
+                let attributes: [NSAttributedString.Key:Any] = [
+                    .strokeColor : color.withAlphaComponent(0.3),
+                    .strokeWidth : -1,
+                    .foregroundColor : color.withAlphaComponent(0.3)
+                ]
+                print("shading == 15")
+                return attributes
+            } else {
+                let attributes: [NSAttributedString.Key:Any] = [
+                    .strokeColor : color,
+                    .strokeWidth : shading
+                ]
+                print("shading != 15")
+                return attributes
+            }
+        }
+
         
-        let attributedString = NSAttributedString(string: symbol, attributes: attributes)
+        let attributedString = NSAttributedString(string: symbol, attributes: attributeHelper(shading: shading))
         
         let totalString = NSMutableAttributedString()
         let totalStringNewLine = NSAttributedString(string: "\n")
