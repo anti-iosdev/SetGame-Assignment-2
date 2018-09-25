@@ -11,7 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 
     // initial initializers
-    var deck = cardDeck()
+    lazy var game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
+    
+    var numberOfTotalSlots: Int {
+        return cardButtons.count
+    }
+    
+    // var deck = cardDeck()
     
     // Button Code
     @IBOutlet var cardButtons: [UIButton]!
@@ -22,10 +28,6 @@ class ViewController: UIViewController {
     
     // string for card back
     func cardTitle(for card: Card) -> NSAttributedString {
-        
-//        let color = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-//        let strokeWidth = 5.0
-        
         let number = card.number.result
         let symbol = card.symbol.result
         let color = card.color.result
@@ -39,18 +41,15 @@ class ViewController: UIViewController {
                     .strokeWidth : -1,
                     .foregroundColor : color.withAlphaComponent(0.3)
                 ]
-                print("shading == 15")
                 return attributes
             } else {
                 let attributes: [NSAttributedString.Key:Any] = [
                     .strokeColor : color,
                     .strokeWidth : shading
                 ]
-                print("shading != 15")
                 return attributes
             }
         }
-
         
         let attributedString = NSAttributedString(string: symbol, attributes: attributeHelper(shading: shading))
         
@@ -64,65 +63,35 @@ class ViewController: UIViewController {
             totalString.append(totalStringNewLine)
             }
         }
-
-        
         return totalString
+    }
+    
+    func setGameNewGame() {
+
     }
     
     // UpdateView
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
-            
-            // debugging
-//            let color = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-//            let strokeWidth = 5.0
-//
-//            let attributes: [NSAttributedString.Key:Any] = [
-//                .strokeWidth : strokeWidth,
-//                .strokeColor : color
-//            ]
-            // let attributedString = NSAttributedString(string: "hello world", attributes: attributes)
-            
-//            if let card = deck.draw() {
-//                //print("test")
-//                let attributedString = cardTitle(for: card)
-//                button.setAttributedTitle(attributedString, for: UIControl.State.normal)
-//            }
-            if let card = deck.draw() {
-                let attributedString = cardTitle(for: card)
-                button.setAttributedTitle(attributedString, for: UIControl.State.normal)
-            }
+            let card = game.cards[index]
+
             
             // rounded corners
             button.layer.cornerRadius = 8.0
+            
+            if card.isFaceUp {
+                button.setAttributedTitle(cardTitle(for: card), for: UIControl.State.normal)
+            } else {
+                button.setTitle("", for: UIControl.State.normal)
+            }
         }
     }
     // debugging
     override func viewDidLoad() {
         super.viewDidLoad()
+        // game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
         updateViewFromModel()
-//        for _ in 1...10 {
-//            if let card = deck.draw() {
-//                var attributedString = cardTitle(for: card)
-//                 print("\(card)")
-//                print("Symbol: \(card.symbol) = \(card.symbol.result)")
-//
-//                var testValue = 0
-//                // let myEnum = card.number
-//                switch card.number {
-//                case .one: print("one")
-//                    testValue += 1
-//                print("testValue: \(testValue)")
-//                case .two: print("two")
-//                    testValue += 2
-//                    print("testValue: \(testValue)")
-//                case .three: print("three")
-//                    testValue += 3
-//                    print("testValue: \(testValue)")
-//                }
-//            }
-//        }
     }
 }
 

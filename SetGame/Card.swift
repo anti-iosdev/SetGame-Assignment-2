@@ -16,16 +16,11 @@ struct Card
     var shading: Shading
     var color: Color
     
-//    var suit: Suit
-//    enum Suit {
-//        case spades
-//        case hearts
-//        case clubs
-//        case diamonds
-//
-//        static var all = [Suit.spades,.hearts,.diamonds,.clubs]
-//    }
+    var isFaceUp = false
+    var isSelected = false
+    var isMatched = false
     
+    // enums
     enum Number {
         case one
         case two
