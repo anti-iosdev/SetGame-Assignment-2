@@ -48,7 +48,10 @@ class SetGame
                             for index in matchMaker {
                                 cards[index].isMatched = true
                                 print("A set was found!")
+                                uglyColorSolution = 1
                             }
+                        } else {
+                            uglyColorSolution = 2
                         }
                     }
                     
@@ -92,23 +95,23 @@ class SetGame
         var matchCounter = 0
         
         if isSame(myArray: numberArray) || isDifferent(myArray: numberArray) {
-            print("Numbers are a set!")
+            //print("Numbers are a set!")
             matchCounter += 1
         }
         if isSame(myArray: symbolArray) || isDifferent(myArray: symbolArray) {
-            print("Symbols are a set!")
+            //print("Symbols are a set!")
             matchCounter += 1
         }
         if isSame(myArray: shadingArray) || isDifferent(myArray: shadingArray) {
-            print("Shadings are a set!")
+            //print("Shadings are a set!")
             matchCounter += 1
         }
         if isSame(myArray: colorArray) || isDifferent(myArray: colorArray) {
-            print("Colors are a set!")
+            //print("Colors are a set!")
             matchCounter += 1
         }
         
-        print("\n")
+        //print("\n")
         
         return matchCounter == 4 ? true : false
     }

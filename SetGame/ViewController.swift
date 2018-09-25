@@ -31,6 +31,15 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    @IBAction func dealThreeCards(_ sender: UIButton) {
+    }
+    
+    @IBAction func newGameButton(_ sender: UIButton) {
+    }
+    
+    @IBOutlet weak var scoreLabel: UILabel!
+    
+    
     // string for card back
     func cardTitle(for card: Card) -> NSAttributedString {
         let number = card.number.result
