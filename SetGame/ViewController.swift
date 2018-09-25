@@ -23,7 +23,12 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBAction func touchCard(_ sender: UIButton) {
-        // updateViewFromModel()
+        //print("this is a card")
+        if let cardNumber = cardButtons.index(of: sender) {
+            game.chooseCard(at: cardNumber)
+            //print("a card has been chosen")
+        }
+        updateViewFromModel()
     }
     
     // string for card back
@@ -80,13 +85,32 @@ class ViewController: UIViewController {
             // rounded corners
             button.layer.cornerRadius = 8.0
             
+            if card.isSelected {
+                button.layer.borderWidth = 3.0
+                button.layer.borderColor = UIColor.blue.cgColor
+            } else {
+                button.layer.borderWidth = 0.0
+            }
+            
             if card.isFaceUp {
                 button.setAttributedTitle(cardTitle(for: card), for: UIControl.State.normal)
             } else {
-                button.setTitle("", for: UIControl.State.normal)
+                button.setAttributedTitle(NSAttributedString(string: ""), for: UIControl.State.normal)
             }
+            
+            if game.uglyColorSolution == 1 {
+                button.layer.borderColor = UIColor.green.cgColor
+            } else if game.uglyColorSolution == 2 {
+                button.layer.borderColor = UIColor.red.cgColor
+            }
+//            if card.isMatched, card.isSelected, game.uglySolution == 1 {
+//                button.layer.borderColor = UIColor.green.cgColor
+//            } else {
+//                button.layer.borderColor = UIColor.red.cgColor
+//            }
         }
     }
+    
     // debugging
     override func viewDidLoad() {
         super.viewDidLoad()
