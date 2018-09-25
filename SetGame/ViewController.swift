@@ -35,16 +35,17 @@ class ViewController: UIViewController {
     func cardTitle(for card: Card) -> NSAttributedString {
         let number = card.number.result
         let symbol = card.symbol.result
-        let color = card.color.result
+        //let color = card.color.result
         let shading = card.shading.result
         
         func attributeHelper(shading: Int) -> [NSAttributedString.Key:Any] {
+            let color = card.color.result
             if shading == 15 {
                 // color = color.withAlphaComponent(0.1)
                 let attributes: [NSAttributedString.Key:Any] = [
-                    .strokeColor : color.withAlphaComponent(0.3),
+                    .strokeColor : color.withAlphaComponent(0.5),
                     .strokeWidth : -1,
-                    .foregroundColor : color.withAlphaComponent(0.3)
+                    .foregroundColor : color.withAlphaComponent(0.5)
                 ]
                 return attributes
             } else {

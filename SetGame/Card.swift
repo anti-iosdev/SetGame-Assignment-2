@@ -51,6 +51,14 @@ struct Card
             }
         }
         
+        var match: Int {
+            switch self {
+            case .one: return 1
+            case .two: return 2
+            case .three: return 3
+            }
+        }
+        
         static var all = [Symbol.one,.two,.three]
     }
     
@@ -68,6 +76,14 @@ struct Card
             }
         }
         
+        var match: Int {
+            switch self {
+            case .one: return 1
+            case .two: return 2
+            case .three: return 3
+            }
+        }
+        
         static var all = [Shading.one,.two,.three]
     }
     
@@ -81,6 +97,14 @@ struct Card
             case .one: return #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             case .two: return #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
             case .three: return #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 1)
+            }
+        }
+        
+        var match: Int {
+            switch self {
+            case .one: return 1
+            case .two: return 2
+            case .three: return 3
             }
         }
         
