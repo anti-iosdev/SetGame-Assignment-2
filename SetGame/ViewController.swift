@@ -23,15 +23,32 @@ class ViewController: UIViewController {
     @IBOutlet var cardButtons: [UIButton]!
     
     @IBAction func touchCard(_ sender: UIButton) {
-        //print("this is a card")
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
-            //print("a card has been chosen")
         }
         updateViewFromModel()
     }
     
+    var destructiveCardIndex = [Int]()
     
+    @IBAction func touchCardDraw(_ sender: UIButton) {
+        print("Draw three cards!")
+
+        for _ in 0..<3 {
+            if cardBoardArrayUpdate(at: destructiveCardIndex.removeFirst()) {
+                print("cardBoardArray = \(cardBoardArray)")
+            }
+        }
+        // MARK: Remove later
+        updateViewFromModel()
+    }
+    
+    @IBAction func newGameButton(_ sender: UIButton) {
+        //game.startNewGame()
+        print("Start a new game!")
+    }
+    
+    @IBOutlet weak var scoreLabel: UILabel!
     
     
     // string for card back
@@ -79,13 +96,43 @@ class ViewController: UIViewController {
 
     }
     
+    var cardBoardArray = [Int]()
+    
+    func cardBoardArrayInit() {
+//        for index in cardButtons.indices {
+//            cardBoardArray.append(index)
+//        }
+        for index in game.cards.indices {
+            destructiveCardIndex.append(index)
+        }
+        
+        for _ in cardButtons.indices {
+            cardBoardArray.append(destructiveCardIndex.removeFirst())
+        }
+        
+        print("cardBoardArray = \(cardBoardArray)")
+        print("cards.count = \(game.cards.count)")
+    }
+    
+    func cardBoardArrayUpdate(at newIndex: Int) -> Bool {
+        for index in cardButtons.indices {
+            if game.cards[index].isFaceUp == false {
+                cardBoardArray[index] = newIndex
+                game.cards[index].isFaceUp = true
+                print("index \(index) was replaced")
+                return true
+            }
+        }
+        return false
+    }
+    
     // UpdateView
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
+            // print("cardBoardArray[index] = \(cardBoardArray[index])")
 
-            
             // rounded corners
             button.layer.cornerRadius = 8.0
             
@@ -113,6 +160,9 @@ class ViewController: UIViewController {
     // debugging
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cardBoardArrayInit()
+        
         // game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
         updateViewFromModel()
     }

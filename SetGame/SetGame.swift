@@ -47,6 +47,7 @@ class SetGame
                         if setMatcher(at: matchMaker) {
                             for index in matchMaker {
                                 cards[index].isMatched = true
+                                cards[index].isFaceUp = false
                                 print("A set was found!")
                                 uglyColorSolution = 1
                             }
@@ -175,6 +176,8 @@ class SetGame
     func simpleFlip(at index: Int) {
         cards[index].isFaceUp ? (cards[index].isFaceUp = false) : (cards[index].isFaceUp = true)
     }
+    
+    //var voidCard = Card.init(number: one, symbol: one, shading: one, color: one, isFaceUp: false, isSelected: false, isMatched: false)
     
     init(numberOfTotalSlots: Int) {
         func shuffleCard() {

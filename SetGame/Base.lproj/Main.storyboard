@@ -245,6 +245,9 @@
                                         <state key="normal" title="Deal 3 More Cards">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="touchCardDraw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hPS-8O-P9K"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4L-PX-RvB">
                                         <rect key="frame" x="71" y="44" width="97" height="36"/>
@@ -253,6 +256,9 @@
                                         <state key="normal" title="New Game">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="newGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NId-L0-7ot"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-WG-B58">
                                         <rect key="frame" x="83" y="88" width="73" height="36"/>
@@ -277,6 +283,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="scoreLabel" destination="Tf2-WG-B58" id="IBb-FH-XIr"/>
                         <outletCollection property="cardButtons" destination="Wpl-td-XEH" collectionClass="NSMutableArray" id="buh-Si-pzo"/>
                         <outletCollection property="cardButtons" destination="4YP-iM-Aj8" collectionClass="NSMutableArray" id="I7N-lA-fOv"/>
                         <outletCollection property="cardButtons" destination="ttb-Yc-qDW" collectionClass="NSMutableArray" id="n1t-MP-IN4"/>

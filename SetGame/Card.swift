@@ -71,7 +71,7 @@ struct Card
         var result: Int {
             switch self {
             case .one: return -1
-            case .two: return 5
+            case .two: return 10
             case .three: return 15
             }
         }
