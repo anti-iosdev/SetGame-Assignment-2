@@ -31,13 +31,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
-    @IBAction func dealThreeCards(_ sender: UIButton) {
-    }
     
-    @IBAction func newGameButton(_ sender: UIButton) {
-    }
-    
-    @IBOutlet weak var scoreLabel: UILabel!
     
     
     // string for card back
@@ -52,9 +46,9 @@ class ViewController: UIViewController {
             if shading == 15 {
                 // color = color.withAlphaComponent(0.1)
                 let attributes: [NSAttributedString.Key:Any] = [
-                    .strokeColor : color.withAlphaComponent(0.5),
-                    .strokeWidth : -1,
-                    .foregroundColor : color.withAlphaComponent(0.5)
+                    .strokeColor : color.withAlphaComponent(0.15),
+                    .foregroundColor : color.withAlphaComponent(0.15),
+                    .strokeWidth : -1
                 ]
                 return attributes
             } else {
@@ -113,11 +107,6 @@ class ViewController: UIViewController {
             } else if game.uglyColorSolution == 2 {
                 button.layer.borderColor = UIColor.red.cgColor
             }
-//            if card.isMatched, card.isSelected, game.uglySolution == 1 {
-//                button.layer.borderColor = UIColor.green.cgColor
-//            } else {
-//                button.layer.borderColor = UIColor.red.cgColor
-//            }
         }
     }
     
