@@ -186,8 +186,8 @@ class ViewController: UIViewController {
             }
             
             if card.isFaceUp {
-                button.setTitle(String(index), for: UIControl.State.normal)
-                // button.setAttributedTitle(cardTitle(for: card), for: UIControl.State.normal)
+                //button.setTitle(String(index), for: UIControl.State.normal)
+                button.setAttributedTitle(cardTitle(for: card), for: UIControl.State.normal)
             } else {
                 button.setAttributedTitle(NSAttributedString(string: ""), for: UIControl.State.normal)
             }
