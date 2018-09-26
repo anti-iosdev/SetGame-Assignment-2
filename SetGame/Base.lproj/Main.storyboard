@@ -284,6 +284,7 @@
                     </view>
                     <connections>
                         <outlet property="scoreLabel" destination="Tf2-WG-B58" id="IBb-FH-XIr"/>
+                        <outlet property="touchCardDraw" destination="4AF-Ig-oZw" id="WMx-i9-E29"/>
                         <outletCollection property="cardButtons" destination="Wpl-td-XEH" collectionClass="NSMutableArray" id="buh-Si-pzo"/>
                         <outletCollection property="cardButtons" destination="4YP-iM-Aj8" collectionClass="NSMutableArray" id="I7N-lA-fOv"/>
                         <outletCollection property="cardButtons" destination="ttb-Yc-qDW" collectionClass="NSMutableArray" id="n1t-MP-IN4"/>

@@ -30,8 +30,20 @@ class SetGame
     
     var uglyColorSolution = 0
     
+    func resetButton() {
+        if uglyColorSolution == 1 {
+            uglyColorSolution = 0
+            activeIndices = nil
+            for index in cards.indices {
+                cards[index].isSelected = false
+                cards[index].isMatched = false
+            }
+        }
+    }
+    
     func chooseCard(at index: Int) {
         uglyColorSolution = 0
+        //resetButton()
         if cards[index].isFaceUp {
             if let matchIndex = activeIndices, !matchIndex.contains(index) {
                 if matchIndex.count < 2 {
@@ -48,7 +60,7 @@ class SetGame
                             for index in matchMaker {
                                 cards[index].isMatched = true
                                 cards[index].isFaceUp = false
-                                print("A set was found!")
+                                // print("A set was found!")
                                 uglyColorSolution = 1
                             }
                         } else {
@@ -193,5 +205,8 @@ class SetGame
             }
         }
         shuffleCard()
+//        for index in deck.cards.indices {
+//            cards.append(deck.cards[index])
+//        }
     }
 }
