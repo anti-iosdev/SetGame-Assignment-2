@@ -27,7 +27,16 @@ class ViewController: UIViewController {
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
+            if game.matchSuccess == 1 {
+                nameGrayCheckerClone()
+            }
         }
+        updateViewFromModel()
+    }
+    
+    @IBAction func deselect(_ sender: UIButton) {
+        print("deselect")
+        game.deselect()
         updateViewFromModel()
     }
     
