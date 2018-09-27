@@ -37,12 +37,28 @@ class ViewController: UIViewController {
         // print("drawing cards")
         // Functions Used
         func arrayMatchedReplace() -> Bool {
-            for index in cardButtons.indices {
-                let cardBoardArrayValue = cardBoardArray[index]
-                if cardBoardArrayValue > -1 {
-                    if game.cards[cardBoardArrayValue].isMatched {
-                        let destructiveValue = destructiveCardIndex.removeFirst()
-                        cardBoardArray[index] = destructiveValue
+            if destructiveCardIndex.count > 0 {
+                for index in cardButtons.indices {
+                    let cardBoardArrayValue = cardBoardArray[index]
+                    if cardBoardArrayValue > -1 {
+                        if game.cards[cardBoardArrayValue].isMatched {
+                            let destructiveValue = destructiveCardIndex.removeFirst()
+                            cardBoardArray[index] = destructiveValue
+                            game.cards[cardBoardArray[index]].isFaceUp = true
+                            return true
+                        }
+                    }
+                }
+            }
+            return false
+        }
+        
+        func arrayEmptyFill() -> Bool {
+            if destructiveCardIndex.count > 0 {
+                for index in cardButtons.indices {
+                    let cardBoardArrayValue = cardBoardArray[index]
+                    if cardBoardArrayValue == -1 {
+                        cardBoardArray[index] = destructiveCardIndex.removeFirst()
                         game.cards[cardBoardArray[index]].isFaceUp = true
                         return true
                     }
@@ -51,17 +67,67 @@ class ViewController: UIViewController {
             return false
         }
         
-        func arrayEmptyFill() -> Bool {
-            for index in cardButtons.indices {
-                let cardBoardArrayValue = cardBoardArray[index]
-                if cardBoardArrayValue == -1 {
-                    cardBoardArray[index] = destructiveCardIndex.removeFirst()
-                    game.cards[cardBoardArray[index]].isFaceUp = true
-                    return true
+        func arrayMatchedReplaceChecker() -> Bool {
+            if destructiveCardIndex.count > 0 {
+                for index in cardButtons.indices {
+                    let cardBoardArrayValue = cardBoardArray[index]
+                    if cardBoardArrayValue > -1 {
+                        if game.cards[cardBoardArrayValue].isMatched {
+                            // let destructiveValue = destructiveCardIndex.removeFirst()
+                            // cardBoardArray[index] = destructiveValue
+                            // game.cards[cardBoardArray[index]].isFaceUp = true
+                            return true
+                        }
+                    }
                 }
             }
             return false
         }
+        
+        func arrayEmptyFillChecker() -> Bool {
+            if destructiveCardIndex.count > 0 {
+                for index in cardButtons.indices {
+                    let cardBoardArrayValue = cardBoardArray[index]
+                    if cardBoardArrayValue == -1 {
+                        // cardBoardArray[index] = destructiveCardIndex.removeFirst()
+                        // game.cards[cardBoardArray[index]].isFaceUp = true
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        
+        func nameGrayChecker() {
+            if !arrayMatchedReplaceChecker(), !arrayEmptyFillChecker() {
+                let button = touchCardDraw
+                let color = UIColor.gray.withAlphaComponent(0.5)
+                
+                let attributes: [NSAttributedString.Key:Any] = [
+                    .strokeColor : color,
+                    .foregroundColor: color,
+                    .strokeWidth: -1
+                ]
+                
+                let attributedString = NSAttributedString(string: "Deal 3 More Cards", attributes: attributes)
+                
+                button?.setAttributedTitle(attributedString, for: UIControl.State.normal)
+            } else {
+                let button = touchCardDraw
+                let color = UIColor.black
+                
+                let attributes: [NSAttributedString.Key:Any] = [
+                    .strokeColor : color,
+                    .foregroundColor: color,
+                    .strokeWidth: -1
+                ]
+                
+                let attributedString = NSAttributedString(string: "Deal 3 More Cards", attributes: attributes)
+                
+                button?.setAttributedTitle(attributedString, for: UIControl.State.normal)
+            }
+        }
+        
         
         // running code
         for _ in 0..<3 {
@@ -71,6 +137,9 @@ class ViewController: UIViewController {
                 //print("index was filled")
             }
         }
+        
+        nameGrayChecker()
+        
         // checks
         // print("cardBoardArray: \(cardBoardArray)")
         
@@ -78,12 +147,27 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    func nameGrayCheckerClone() {
+        let button = touchCardDraw
+        let color = UIColor.black
+        
+        let attributes: [NSAttributedString.Key:Any] = [
+            .strokeColor : color,
+            .foregroundColor: color,
+            .strokeWidth: -1
+        ]
+        
+        let attributedString = NSAttributedString(string: "Deal 3 More Cards", attributes: attributes)
+        
+        button?.setAttributedTitle(attributedString, for: UIControl.State.normal)
+    }
     
     @IBAction func newGameButton(_ sender: UIButton) {
         // game.startNewGame()
         // print("Starting a new game!")
         game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
         cardBoardArrayInit()
+        nameGrayCheckerClone()
         updateViewFromModel()
     }
     
