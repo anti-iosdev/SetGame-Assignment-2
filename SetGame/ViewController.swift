@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // initial initializers
     lazy var game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
     
@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     var destructiveCardIndex = [Int]()
     
     @IBAction func touchCardDraw(_ sender: UIButton) {
+        // print("drawing cards")
         // Functions Used
         func arrayMatchedReplace() -> Bool {
             for index in cardButtons.indices {
@@ -61,25 +62,28 @@ class ViewController: UIViewController {
             }
             return false
         }
-    
+        
         // running code
         for _ in 0..<3 {
             if arrayMatchedReplace() {
-                print("index was replaced")
+                //print("index was replaced")
             } else if arrayEmptyFill() {
-                print("index was filled")
+                //print("index was filled")
             }
         }
         // checks
-        print("cardBoardArray: \(cardBoardArray)")
+        // print("cardBoardArray: \(cardBoardArray)")
         
         // updates
         updateViewFromModel()
     }
     
     @IBAction func newGameButton(_ sender: UIButton) {
-        //game.startNewGame()
-        print("Start a new game!")
+        // game.startNewGame()
+        // print("Starting a new game!")
+        game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
+        cardBoardArrayInit()
+        updateViewFromModel()
     }
     
     @IBOutlet weak var scoreLabel: UILabel!
@@ -122,19 +126,18 @@ class ViewController: UIViewController {
             totalString.append(attributedString)
             
             if index + 1 != number {
-            totalString.append(totalStringNewLine)
+                totalString.append(totalStringNewLine)
             }
         }
         return totalString
     }
     
-    func setGameNewGame() {
-
-    }
-    
     var cardBoardArray = [Int]()
     
     func cardBoardArrayInit() {
+        destructiveCardIndex = [Int]()
+        cardBoardArray = [Int]()
+        
         for index in game.cards.indices {
             destructiveCardIndex.append(index)
         }
@@ -146,33 +149,33 @@ class ViewController: UIViewController {
                 cardBoardArray.append(-1)
             }
         }
-        //print("destructiveCardIndex: \()")
-        //print("cardBoardArray = \(cardBoardArray)")
-        // print("cards.count = \(game.cards.count)")
+//        print("destructiveCardIndex: \(destructiveCardIndex)")
+//        print("cardBoardArray = \(cardBoardArray)")
+//        print("cards.count = \(game.cards.count)")
     }
     
     func cardBoardArrayUpdate(at newIndex: Int) -> Bool {
-//        print("cardBoardArray: \(cardBoardArray)")
-//        print("cards.indices: \(game.cards.indices)")
-//        print("destructiveCardIndex: \(destructiveCardIndex)")
-//        return true
-                for index in cardBoardArray.indices {
-                    // print("\(index)")
-                    
-                    if game.cards[index].isMatched == true {
-                        cardBoardArray[index] = newIndex
-                        game.cards[newIndex].isFaceUp = true
-                        game.cards[newIndex].isMatched = false
-                        print("\(index) was replaced with \(newIndex)")
-                        return true
-                    } else if cardBoardArray[index] == -1 {
-                        print("void: index=\(index)")
-                        game.cards[newIndex].isFaceUp = true
-                        cardBoardArray[index] = newIndex
-                        return true
-                    }
-                }
-                return false
+        //        print("cardBoardArray: \(cardBoardArray)")
+        //        print("cards.indices: \(game.cards.indices)")
+        //        print("destructiveCardIndex: \(destructiveCardIndex)")
+        //        return true
+        for index in cardBoardArray.indices {
+            // print("\(index)")
+            
+            if game.cards[index].isMatched == true {
+                cardBoardArray[index] = newIndex
+                game.cards[newIndex].isFaceUp = true
+                game.cards[newIndex].isMatched = false
+                print("\(index) was replaced with \(newIndex)")
+                return true
+            } else if cardBoardArray[index] == -1 {
+                print("void: index=\(index)")
+                game.cards[newIndex].isFaceUp = true
+                cardBoardArray[index] = newIndex
+                return true
+            }
+        }
+        return false
     }
     
     // MARK: updateViewFromModel
@@ -185,7 +188,7 @@ class ViewController: UIViewController {
             if cardBoardValue > -1 {
                 card = game.cards[cardBoardValue]
             }
-
+            
             // rounded corners
             button.layer.cornerRadius = 8.0
             
@@ -216,8 +219,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         cardBoardArrayInit()
-        
-        // game = SetGame(numberOfTotalSlots: numberOfTotalSlots)
         updateViewFromModel()
     }
 }
