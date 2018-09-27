@@ -78,6 +78,7 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    
     @IBAction func newGameButton(_ sender: UIButton) {
         // game.startNewGame()
         // print("Starting a new game!")
