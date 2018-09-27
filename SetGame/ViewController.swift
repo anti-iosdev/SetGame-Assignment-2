@@ -61,17 +61,19 @@ class ViewController: UIViewController {
             }
             return false
         }
-        
+    
+        // running code
+        for _ in 0..<3 {
+            if arrayMatchedReplace() {
+                print("index was replaced")
+            } else if arrayEmptyFill() {
+                print("index was filled")
+            }
+        }
         // checks
         print("cardBoardArray: \(cardBoardArray)")
         
-        if arrayMatchedReplace() {
-            print("index was replaced")
-        } else if arrayEmptyFill() {
-            print("index was filled")
-        }
-        
-        
+        // updates
         updateViewFromModel()
     }
     
@@ -95,15 +97,17 @@ class ViewController: UIViewController {
             if shading == 15 {
                 // color = color.withAlphaComponent(0.1)
                 let attributes: [NSAttributedString.Key:Any] = [
-                    .strokeColor : color.withAlphaComponent(0.15),
-                    .foregroundColor : color.withAlphaComponent(0.15),
+                    .strokeColor : color.withAlphaComponent(0.3),
+                    .foregroundColor : color.withAlphaComponent(0.3),
                     .strokeWidth : -1
                 ]
                 return attributes
             } else {
                 let attributes: [NSAttributedString.Key:Any] = [
                     .strokeColor : color,
-                    .strokeWidth : shading
+                    .strokeWidth : shading,
+                    .foregroundColor: color
+                    
                 ]
                 return attributes
             }
