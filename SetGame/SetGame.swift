@@ -15,6 +15,7 @@ class SetGame
     
     var activeIndices: [Int]?
     var matchSuccess = 0
+    var score = 0
     
 //    {
 //        get {
@@ -74,8 +75,10 @@ class SetGame
                                 uglyColorSolution = 1
                                 matchSuccess = 1
                             }
+                            score += 5
                         } else {
                             uglyColorSolution = 2
+                            score -= 2
                         }
                     }
                     

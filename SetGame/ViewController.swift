@@ -35,7 +35,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deselect(_ sender: UIButton) {
-        print("deselect")
+        // print("deselect")
         game.deselect()
         updateViewFromModel()
     }
@@ -306,6 +306,7 @@ class ViewController: UIViewController {
                 button.layer.borderColor = UIColor.red.cgColor
             }
         }
+        scoreLabel.text = "Score: \(game.score)"
     }
     
     // debugging
@@ -317,3 +318,31 @@ class ViewController: UIViewController {
     }
 }
 
+extension String {
+    var NSAttributor: NSAttributedString {
+        let attributes: [NSAttributedString.Key:Any] = [
+            .strokeColor : UIColor.black,
+            .foregroundColor : UIColor.black,
+            .strokeWidth : -1
+        ]
+        return NSAttributedString(string: self, attributes: attributes)
+    }
+}
+
+//let attributes: [NSAttributedString.Key:Any] = [
+//    .strokeColor : color.withAlphaComponent(0.3),
+//    .foregroundColor : color.withAlphaComponent(0.3),
+//    .strokeWidth : -1
+//]
+
+//extension Int {
+//    var arc4random: Int {
+//        if self > 0 {
+//            return Int(arc4random_uniform(UInt32(self)))
+//        } else if self < 0 {
+//            return -Int(arc4random_uniform(UInt32(abs(self))))
+//        } else {
+//            return 0
+//        }
+//    }
+//}
