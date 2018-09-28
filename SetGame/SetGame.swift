@@ -55,7 +55,8 @@ class SetGame
         uglyColorSolution = 0
         matchSuccess = 0
         //resetButton()
-        if cards[index].isFaceUp {
+        //print("cards[\(index)].isFaceUp = \(cards[index].isFaceUp)")
+        if cards[index].isFaceUp == true {
             if let matchIndex = activeIndices, !matchIndex.contains(index) {
                 if matchIndex.count < 2 {
                     activeIndices!.append(index)
@@ -208,9 +209,9 @@ class SetGame
     init(numberOfTotalSlots: Int) {
         func shuffleCard() {
             for index in deck.cards.indices {
-                if index < 12 {
+                if index >= 12 {
                     var cardTemp = deck.draw()!
-                    cardTemp.isFaceUp = true
+                    cardTemp.isFaceUp = false
                     cards.append(cardTemp)
                 }
                 else {

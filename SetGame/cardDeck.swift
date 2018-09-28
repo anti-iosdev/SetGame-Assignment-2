@@ -17,7 +17,7 @@ struct cardDeck
             for symbol in Card.Symbol.all {
                 for shading in Card.Shading.all {
                     for color in Card.Color.all {
-                        cards.append(Card(number: number, symbol: symbol, shading: shading, color: color, isFaceUp: false, isSelected: false, isMatched: false))
+                        cards.append(Card(number: number, symbol: symbol, shading: shading, color: color, isFaceUp: true, isSelected: false, isMatched: false))
                     }
                 }
             }
