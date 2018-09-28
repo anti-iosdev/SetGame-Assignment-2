@@ -26,10 +26,13 @@ class ViewController: UIViewController {
     
     @IBAction func touchCard(_ sender: UIButton) {
         if let cardNumber = cardButtons.index(of: sender) {
-            game.chooseCard(at: cardNumber)
+            game.chooseCard(at: cardBoardArray[cardNumber])
             if game.matchSuccess == 1 {
                 nameGrayCheckerClone()
             }
+            //print("game.cards[cardBoardArray[cardNumber]].isFaceUp = \(game.cards[cardBoardArray[cardNumber]].isFaceUp)")
+            //print("cardBoardArray[cardNumber] = \(cardBoardArray[cardNumber])")
+            //print("cardNumber = \(cardNumber)")
         }
         updateViewFromModel()
     }
@@ -51,8 +54,7 @@ class ViewController: UIViewController {
                     let cardBoardArrayValue = cardBoardArray[index]
                     if cardBoardArrayValue > -1 {
                         if game.cards[cardBoardArrayValue].isMatched {
-                            let destructiveValue = destructiveCardIndex.removeFirst()
-                            cardBoardArray[index] = destructiveValue
+                            cardBoardArray[index] = destructiveCardIndex.removeFirst()
                             game.cards[cardBoardArray[index]].isFaceUp = true
                             return true
                         }
